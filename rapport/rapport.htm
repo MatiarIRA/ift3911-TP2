@@ -70,10 +70,10 @@
         <br/><br/> Le diagramme de classes en .vpp est disponible
         <a href="design/ift3911_tp2_diagramme_classes.vpp" download>ici</a>.</p>
     <br/>
-	<h3>1.2. Diagramme de paquets</h3>
-	<p>Le diagramme de paquets est présenté ci-dessous:
-	<br/><br/>
-		<img src="design/diagramme_paquets.png" alt="image of diag of conceptual class" />
+    <h3>1.2. Diagramme de paquets</h3>
+    <p>Le diagramme de paquets est présenté ci-dessous:
+        <br/><br/>
+        <img src="design/diagramme_paquets.png" alt="image of diag of conceptual class" />
         <br/><br/> Le diagramme de classes en .vpp est disponible
         <a href="design/ift3911_tp2_diagramme_package.vpp" download>ici</a>.</p>
     <br/>
@@ -93,6 +93,7 @@
         <a href="design/ift3911_tp2_dss_client.vpp" download>ici</a>.</p>
     <br/>
     <h3>1.3 Identification les modules a usage général et réutilisables</h3>
+    <p>Voir la partie 3.1</p>
     <h2>2 Contraintes OCL</h2>
     <h3>2.1 Le port de départ et d'arrivée doit être le même</h3>
     <p>Context Croisiere</p>
@@ -114,7 +115,286 @@
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.client.asSet()->notEmpty()</p>
     <br/>
     <h2>3 Analyse et Justification</h2>
-    <h3>3.1 </h3>
-    <br/>
+    <h3>3.1 Calucle de fardeau et déterminsation de la réutilisabilité et le domaine des modules</h3>
+    <table cellpadding="3px" border="1" style="text-align:left">
+        <thead>
+            <tr>
+                <th>Modules</th>
+                <th>Fardeau</th>
+                <th>Réutilisation</th>
+                <th>Domaine</th>
+            </tr>
+            <tr>
+                <td>Section</td>
+                <td>10</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>SectionSiege</td>
+                <td>13</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>SectionCabine</td>
+                <td>11</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Econo/Prmm/Affaire/Prmr</td>
+                <td>15</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+
+            <tr>
+                <td>Inte/Suite/FmlDeluxe/Fml/Ocean</td>
+                <td>13</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>DespostionSiege</td>
+                <td>2</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Etroit/Large/Moyen/Confort</td>
+                <td>3</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Transport</td>
+                <td>13</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Paquebot</td>
+                <td>15</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Train</td>
+                <td>15</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Avion</td>
+                <td>15</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>GestionnaireTransports</td>
+                <td>12</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Siege</td>
+                <td>4</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Reservable</td>
+                <td>1</td>
+                <td>élevée</td>
+                <td>architecteur</td>
+            </tr>
+            <tr>
+                <td>Cabine</td>
+                <td>3</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Place</td>
+                <td>5</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>EtatPlace</td>
+                <td>1</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Position</td>
+                <td>1</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>GestionnairePlaces</td>
+                <td>13</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Administrateur</td>
+                <td>2</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>SystemAdmin</td>
+                <td>29</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>GestionnaireAdmins</td>
+                <td>13</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Client</td>
+                <td>5</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>SystemClient</td>
+                <td>plus de 20</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>GestionnaireClients</td>
+                <td>13</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Trajet</td>
+                <td>20</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>DescriptionTrajet</td>
+                <td>plus de 20</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>GestionnaireTrajets</td>
+                <td>27</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Station</td>
+                <td>3</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Ville</td>
+                <td>2</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Gare</td>
+                <td>4</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Aeroport</td>
+                <td>4</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Port</td>
+                <td>4</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>GestionnaireStations</td>
+                <td>13</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>CompagnieTransport</td>
+                <td>3</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>CompagnieAerienne</td>
+                <td>4</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>CompagnieCroisiere</td>
+                <td>4</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>CompagnieTrain</td>
+                <td>4</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>GestionnaireCompagnies</td>
+                <td>13</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Reservation</td>
+                <td>plus de 20</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>GestionnaireReservations</td>
+                <td>plus de 20</td>
+                <td>faible</td>
+                <td>application</td>
+            </tr>
+            <tr>
+                <td>Paiment</td>
+                <td>7</td>
+                <td>moyenne</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Transaction</td>
+                <td>6</td>
+                <td>moyenne</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>CarteCredit</td>
+                <td>2</td>
+                <td>élevée</td>
+                <td>métier</td>
+            </tr>
+            <tr>
+                <td>Remboursement</td>
+                <td>7</td>
+                <td>moyenne</td>
+                <td>métier</td>
+            </tr>
+            <br/>
 
 </body>
