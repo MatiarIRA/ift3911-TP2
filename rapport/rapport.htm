@@ -62,7 +62,7 @@
             </tr>
         </thead>
     </table>
-    <h2>1 Modèle de conception du domaine</h2>
+    <h2>1. Modèle de conception du domaine</h2>
     <h3>1.1. Diagramme de classes</h3>
     <p>Le diagramme de classes est présenté ci-dessous:
         <br/><br/>
@@ -74,7 +74,7 @@
     <p>Le diagramme de paquets est présenté ci-dessous:
         <br/><br/>
         <img src="design/diagramme_paquets.png" alt="image of diag of conceptual class" />
-        <br/><br/> Le diagramme de classes en .vpp est disponible
+        <br/><br/> Le diagramme de paquets en .vpp est disponible
         <a href="design/ift3911_tp2_diagramme_package.vpp" download>ici</a>.</p>
     <br/>
     <h3>1.3. Diagrammes de séquence système</h3>
@@ -92,21 +92,19 @@
     <p>Les diagrammes de séquence système volet client en .vpp sont disponibles
         <a href="design/ift3911_tp2_dss_client.vpp" download>ici</a>.</p>
     <br/>
-    <h3>1.3 Identification les modules a usage général et réutilisables</h3>
-    <p>Voir la partie 3.1</p>
-    <h2>2 Contraintes OCL</h2>
-    <h3>2.1 Le port de départ et d'arrivée doit être le même</h3>
+    <h2>2. Contraintes OCL</h2>
+    <h3>2.1. Le port de départ et d'arrivée doit être le même</h3>
     <p>Context Croisiere</p>
     <p>inv : self.descriptionItineraire.origin = self. descriptionItineraire.destination</p>
     <br/>
-    <h3>2.2 Un paquebot peut être assigné à plusieurs itinéraires tant qu'ils ne se chevauchent pas.</h3>
+    <h3>2.2. Un paquebot peut être assigné à plusieurs itinéraires tant qu'ils ne se chevauchent pas.</h3>
     <p>Contexte Criosiere </p>
     <p>inv: Croisiere.allInstances()->forAll(c1,c2 : Croisiere| c1
         <>c2 AND </p>
     <p>c1.transport.id=c2.transport.id implies c1.tempsArrive
         < c2.tempsDepart OR c1.tempsDepart> c2.tempsArrive</p>
     <br/>
-    <h3>2.3 Réserver ne peut se faire que pour un siège/cabine libre</h3>
+    <h3>2.3. Réserver ne peut se faire que pour un siège/cabine libre</h3>
     <p>Contexte Reservation::reserverPlace(place :Place, client Client)</p>
     <p>Pre : self.placeTrajet.etatPlace= LIBRE </p>
     <p>Post : self.placeTrajet.etatPlace = RESERVE</p>
@@ -114,8 +112,8 @@
         <> null</p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.client.asSet()->notEmpty()</p>
     <br/>
-    <h2>3 Analyse et Justification</h2>
-    <h3>3.1 Calucle de fardeau et déterminsation de la réutilisabilité et le domaine des modules</h3>
+    <h2>3. Analyse et Justification</h2>
+    <h3>3.1. Calucl du fardeau et déterminsation de la réutilisabilité et du domaine des modules</h3>
     <table cellpadding="3px" border="1" style="text-align:left">
         <thead>
             <tr>
@@ -398,11 +396,11 @@
         </tr>
     </table>
     <br/>
-    <h3>3.2 Couplage</h3>
-    <p>A fin de d'avoir un bon design, on a essayé d'avoir les couplages les plus faibles dans notre design. Les couplages utilisés sont plutot les couplages par paquets et couplages par données. On a tenté d'augmenter <br/> la possibilité de réutilisation
+    <h3>3.2. Couplage</h3>
+    <p>À fin de d'avoir un bon design, on a essayé d'avoir les couplages les plus faibles dans notre design. Les couplages utilisés sont plutot les couplages par paquets et couplages par données. On a tenté d'augmenter <br/> la possibilité de réutilisation
         des modules en utilisant des interfaces</p>
     <br/>
-    <h3>3.3 Cohésion</h3>
+    <h3>3.3. Cohésion</h3>
 
     <table cellpadding="3px" border="1" style="text-align:left">
         <thead>
@@ -641,27 +639,123 @@
         </tr>
     </table>
     <br/>
+	<h3>3.4. Graphe IA</h3>
+	<p>L'instabilité des paquets est calculée par:<br/>
+	<i>I = Ce / (Ca + Ce)</i>
+	<br/>
+	Où:<br/>
+	<i>Ce = Nombre de dépendances sortantes </i><br>
+	<i>Ca = Nombre de dépendances entrantes</i></p>
+	
+	<p>L'abstraction des paquets est calculée par:<br/>
+	<i>A = Na / Nc</i>
+	<br/>
+	Où:<br/>
+	<i>Na = Nombre de classes abstraites </i><br/>
+	<i>Nc = Nombre de classes total</i></p>
+	
+	<p>La table suivante montre les valeurs calculées pour notre système:</p>
+	
+	<table cellpadding="3px" border="1" style="text-align:left">
+        <thead>
+            <tr>
+                <th>Paquet</th>
+                <th>Ce</th>
+                <th>Ca</th>
+				<th>Na</th>
+				<th>Nc</th>
+				<th>Instabilité</th>
+				<th>Abstraction</th>
+            </tr>
+            <tr>
+                <td>Trajets</td>
+                <td>6</td>
+                <td>0</td>
+				<td>3</td>
+				<td>15</td>
+				<td>1</td>
+				<td>0.2</td>
+            </tr>
+			<tr>
+                <td>Transports</td>
+                <td>2</td>
+                <td>2</td>
+				<td>6</td>
+				<td>28</td>
+				<td>0.50</td>
+				<td>0.21</td>
+            </tr>
+			<tr>
+                <td>Reservations</td>
+                <td>3</td>
+                <td>1</td>
+				<td>1</td>
+				<td>3</td>
+				<td>0.75</td>
+				<td>0.33</td>
+            </tr>
+			<tr>
+                <td>Transactions</td>
+                <td>0</td>
+                <td>1</td>
+				<td>1</td>
+				<td>4</td>
+				<td>0</td>
+				<td>0.25</td>
+            </tr>
+			<tr>
+                <td>Usagers</td>
+                <td>2</td>
+                <td>1</td>
+				<td>0</td>
+				<td>6</td>
+				<td>0.67</td>
+				<td>0</td>
+            </tr>
+			<tr>
+                <td>Gestion</td>
+                <td>0</td>
+                <td>8</td>
+				<td>1</td>
+				<td>1</td>
+				<td>0</td>
+				<td>1</td>
+            </tr>
+        </thead>
+    </table>
+	<p>Le graphe IA est présenté ci-après.</p>
+	<img src="design/graphe_ia.png" alt="graphe IA"><br>
+	<p>L'axe X présente l'Instabilité, et l'axe Y présente l'Abstraction. D = |A + I - 1|.</p>
+	<p>Selon le principe SDP (Stable Dependencies Principle), un paquet doit dépendre uniquement de paquets plus stables que lui. Dans notre système nous avons les dépendances suivantes:<br/>
+	<ul>
+		<li>Trajets dépend de Transports, de Réservations et de Gestion.</li>
+		<li>Transports dépend de Gestion.</li>
+		<li>Réservations dépend de Gestion, de Transactions et de Usagers.</li>
+		<li>Usagers dépend de Gestion.</li>
+		<li>Transactions ne dépend d'aucun autre paquet.</li>
+		<li>Gestion ne dépend d'aucun autre paquet.</li>
+	</ul>
+	<p>On observe que le principe est respecté dans notre système. </p>
 
-
-    <h3>3.4 Principes SOLID</h3>
-    <p>En revisant de notre design, on s'est assuré que les principes SOLD soient réspectés autant que possible. Par la suite on mentionne sur quelques stratégies qu'on a appliqué pour réspecter les principes.</p>
-    <h4>3.4.1 Single Responsibility Principle</h4>
+    <h3>3.5. Principes SOLID</h3>
+    <p>En revisant notre design, on s'est assuré que les principes SOLID soient réspectés autant que possible. Par la suite on mentionne sur quelques stratégies qu'on a appliqué pour réspecter ces principes.</p>
+    <h4>3.5.1. Single Responsibility Principle</h4>
     <p>Pour gérer les différants modules de l'application (afin d'appliquer les méthodes CRUD) on a utilisé les classes Gestionnaires différants de sorte que chacune a sa propre responsabilité.</p>
     <br/>
-    <h4>3.4.2 Open/Close Principle</h4>
+    <h4>3.5.2. Open/Close Principle</h4>
     <p>En utilisant des interfaces tel que Gestionnaire et DispositonSiege et aussi des classes abstraites tel que Place Section, Station, Transport, Trajet on a évité la violance de ce principe contre les modifications avenir.</p>
     <br/>
-    <h4>3.4.3 Liskov Substitutability Principle</h4>
+    <h4>3.5.3. Liskov Substitutability Principle</h4>
     <p>Lors d'appliquer l'héritage, on s'est assuré que toutes les sous-classes sont capables de substitute leurs parents pour fournir les fonctionalités promises par leurs parents.</p>
     <br/>
-    <h4>3.4.4 Interface Segregation Principle</h4>
+    <h4>3.5.4. Interface Segregation Principle</h4>
     <p>Lors d'appliquer les interfaces, on s'est assuré qu'aucun client de ces interfaces a besion d'implementer des méthodes hors de son sujet.</p>
     <br/>
-    <h4>3.4.5 Dependency Inversion Principle</h4>
+    <h4>3.5.5. Dependency Inversion Principle</h4>
     <p>A chaque classe où instanciation des autres objets a été nécessaire, on a utilisé le type abstraite de l'objet ou bien l'interface, au lieu d'utilisation des différents type concretes. De cette maniere la responsabilité de <br/> creation des objets
         dépandants est hors de la classe qui le consume. La spécification de l'objet en question peut être identifier dans un constructeur. Par exemple la classe SystemAdmin a des methodes qui consument des objets abstaits Section,Trajet et Compagnie.
     </p>
     <br/>
-    <h3>3.5 Loi de Demeter</h3>
-    <p>Dans chaque classe que l'access à une autre classe a été nécessaire, il est fait par un attribue de la classe réception ou un argument d'une méthodes de la classe.<br/> Voir SystemAdmin, Transport, SystemClient par exemple.</p>
+    <h3>3.6. Loi de Demeter</h3>
+    <p>Dans chaque classe que l'access à une autre classe a été nécessaire, il est fait par un attribut de la classe réception ou un argument d'une méthodes de la classe.<br/> Voir SystemAdmin, Transport, SystemClient par exemple.</p>
 </body>
